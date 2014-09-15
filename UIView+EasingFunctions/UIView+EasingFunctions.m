@@ -230,7 +230,7 @@ static BOOL Swizzled = NO;
         
     }
     
-    CAAnimation *override;
+    CAKeyframeAnimation *override;
     
     CABasicAnimation *basicAnimation = (CABasicAnimation *)anim;
     
@@ -319,7 +319,9 @@ static BOOL Swizzled = NO;
         override.fillMode = anim.fillMode;
         override.delegate = anim.delegate;
         override.removedOnCompletion = anim.removedOnCompletion;
-        
+
+        override.additive = basicAnimation.isAdditive;
+
         [self easing_addAnimation:override forKey:keyPath];
         
     } else {
